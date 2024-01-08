@@ -6,7 +6,7 @@
     <div class="col-md-12">
 
         @if (session('message'))
-            <h5 class="alert alert-success mb-2">{{ session('message') }}</h5>
+        <h5 class="alert alert-success mb-2">{{ session('message') }}</h5>
         @endif
 
         <div class="card">
@@ -20,7 +20,7 @@
                 @if ($errors->any())
                 <div class="alert alert-warning">
                     @foreach ($errors->all() as $error)
-                        <div><small>{{$error}}</small></div>
+                    <div><small>{{$error}}</small></div>
                     @endforeach
                 </div>
                 @endif
@@ -51,15 +51,15 @@
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="image-tab" data-bs-toggle="tab"
-                                data-bs-target="#image-tab-pane" type="button" role="tab"
-                                aria-controls="image-tab-pane" aria-selected="false">
+                                data-bs-target="#image-tab-pane" type="button" role="tab" aria-controls="image-tab-pane"
+                                aria-selected="false">
                                 Product Image
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="color-tab" data-bs-toggle="tab"
-                                data-bs-target="#color-tab-pane" type="button" role="tab"
-                                aria-controls="color-tab-pane" aria-selected="false">
+                                data-bs-target="#color-tab-pane" type="button" role="tab" aria-controls="color-tab-pane"
+                                aria-selected="false">
                                 Product Color
                             </button>
                         </li>
@@ -72,7 +72,8 @@
                                 <label>Category</label>
                                 <select name="category_id" class="form-control">
                                     @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected':'' }}>
+                                    <option value="{{ $category->id }}" {{ $category->id == $product->category_id ?
+                                        'selected':'' }}>
                                         {{ $category->name }}
                                     </option>
                                     @endforeach
@@ -90,7 +91,8 @@
                                 <label>Brand</label>
                                 <select name="brand" class="form-control">
                                     @foreach ($brands as $brand)
-                                    <option value="{{ $brand->name }}" {{ $brand->name == $product->brand ? 'selected':'' }}>
+                                    <option value="{{ $brand->name }}" {{ $brand->name == $product->brand ?
+                                        'selected':'' }}>
                                         {{ $brand->name }}
                                     </option>
                                     @endforeach
@@ -98,65 +100,76 @@
                             </div>
                             <div class="mb-3">
                                 <label>Small Description (500 words)</label>
-                                <textarea name="small_description" class="form-control" rows="4">{{ $product->small_description }}</textarea>
+                                <textarea name="small_description" class="form-control"
+                                    rows="4">{{ $product->small_description }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label>Description</label>
-                                <textarea name="description" class="form-control" rows="4">{{ $product->description }}</textarea>
+                                <textarea name="description" class="form-control"
+                                    rows="4">{{ $product->description }}</textarea>
                             </div>
                         </div>
-                        <div class="tab-pane fade border p-3" id="seotag-tab-pane" role="tabpanel" aria-labelledby="seotag-tab"
-                            tabindex="0">
+                        <div class="tab-pane fade border p-3" id="seotag-tab-pane" role="tabpanel"
+                            aria-labelledby="seotag-tab" tabindex="0">
                             <div class="mb-3">
                                 <label>Meta Title</label>
-                                <input type="text" name="meta_title" class="form-control" value="{{ $product->meta_title }}">
+                                <input type="text" name="meta_title" class="form-control"
+                                    value="{{ $product->meta_title }}">
                             </div>
                             <div class="mb-3">
                                 <label>Meta Keyword</label>
-                                <textarea name="meta_keyword" class="form-control" rows="4">{{ $product->meta_keyword }}</textarea>
+                                <textarea name="meta_keyword" class="form-control"
+                                    rows="4">{{ $product->meta_keyword }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label>Meta Description</label>
-                                <textarea name="meta_description" class="form-control" rows="4">{{ $product->meta_description }}</textarea>
+                                <textarea name="meta_description" class="form-control"
+                                    rows="4">{{ $product->meta_description }}</textarea>
                             </div>
                         </div>
-                        <div class="tab-pane fade border p-3" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab"
-                            tabindex="0">
+                        <div class="tab-pane fade border p-3" id="details-tab-pane" role="tabpanel"
+                            aria-labelledby="details-tab" tabindex="0">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label>Original Price</label>
-                                        <input type="text" name="original_price" class="form-control" value="{{ $product->original_price }}">
+                                        <input type="text" name="original_price" class="form-control"
+                                            value="{{ $product->original_price }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label>Selling Price</label>
-                                        <input type="text" name="selling_price" class="form-control" value="{{ $product->selling_price }}">
+                                        <input type="text" name="selling_price" class="form-control"
+                                            value="{{ $product->selling_price }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label>Quantity</label>
-                                        <input type="number" name="quantity" class="form-control" value="{{ $product->quantity }}">
+                                        <input type="number" name="quantity" class="form-control"
+                                            value="{{ $product->quantity }}">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label>Treanding</label>
-                                        <input type="checkbox" name="trending" {{ $product->trending == '1' ? 'checked':'' }} style="width:50px; height:15px;">
+                                        <input type="checkbox" name="trending" {{ $product->trending == '1' ?
+                                        'checked':'' }} style="width:50px; height:15px;">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label>Status</label>
-                                        <input type="checkbox" name="status" {{ $product->status == '1' ? 'checked':'' }} style="width:50px; height:15px;">
+                                        <input type="checkbox" name="status" {{ $product->status == '1' ? 'checked':''
+                                        }} style="width:50px; height:15px;">
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade border p-3" id="image-tab-pane" role="tabpanel" aria-labelledby="image-tab" tabindex="0">
+                        <div class="tab-pane fade border p-3" id="image-tab-pane" role="tabpanel"
+                            aria-labelledby="image-tab" tabindex="0">
                             <div class="mb-3">
                                 <label>Product Image</label>
                                 <input type="file" multiple name="image[]" class="form-control">
@@ -166,35 +179,42 @@
                                 <div class="row">
                                     @foreach ($product->productImages as $image)
                                     <div class="col-md-2">
-                                        <img src="{{ asset($image->image) }}" style="width: 80px; height: 80px;" class="me-4 border" alt="images" />
-                                        <a href="{{ url('admin/product-image/'.$image->id.'/delete') }}" class="d-block">Remove</a>
+                                        <img src="{{ asset($image->image) }}" style="width: 80px; height: 80px;"
+                                            class="me-4 border" alt="images" />
+                                        <a href="{{ url('admin/product-image/'.$image->id.'/delete') }}"
+                                            class="d-block">Remove</a>
                                     </div>
                                     @endforeach
                                 </div>
                                 @else
-                                    <h5>No Image Found !!!</h5>
+                                <h5>No Image Found !!!</h5>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="tab-pane fade border p-3" id="color-tab-pane" role="tabpanel" aria-labelledby="color-tab" tabindex="0">
+                        <div class="tab-pane fade border p-3" id="color-tab-pane" role="tabpanel"
+                            aria-labelledby="color-tab" tabindex="0">
                             <div class="mb-3">
                                 <h4>Add Product Color</h4>
                                 <label>Edit Product Color</label>
                                 <hr>
                                 <div class="row">
                                     @forelse ($colors as $coloritem)
-                                        <div class="col-md-3">
-                                            <div class="p-2 border mb-3">
-                                                Color: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="colors[{{ $coloritem->id }}]" value="{{ $coloritem->id }}" /> {{ $coloritem->name }}
-                                                <br/>
-                                                Quantity: &nbsp;&nbsp;<input type="number" name="colorquantity[{{ $coloritem->id }}]" style="border: 1px solid; width: 70px;" />
-                                            </div>
+                                    <div class="col-md-3">
+                                        <div class="p-2 border mb-3">
+                                            Color: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"
+                                                name="colors[{{ $coloritem->id }}]" value="{{ $coloritem->id }}" /> {{
+                                            $coloritem->name }}
+                                            <br />
+                                            Quantity: &nbsp;&nbsp;<input type="number"
+                                                name="colorquantity[{{ $coloritem->id }}]"
+                                                style="border: 1px solid; width: 70px;" />
                                         </div>
+                                    </div>
                                     @empty
-                                        <div class="col-md-12">
-                                            <h4>No Colour Found !!!</h4>
-                                        </div>
+                                    <div class="col-md-12">
+                                        <h4>No Colour Found !!!</h4>
+                                    </div>
                                     @endforelse
                                 </div>
                             </div>
@@ -210,24 +230,28 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($product->productColors as $prodColor)
-                                            <tr class="prod-color-tr">
-                                                <td>
-                                                    @if ($prodColor->color)
-                                                        {{ $prodColor->color->name }}
-                                                    @else
-                                                        No Color Found !!!
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    <div class="input-group mb-3" style="width: 150px;">
-                                                        <input type="text" class="productColorQuantity form-control form-control-sm" value="{{ $prodColor->quantity }}">
-                                                        <button type="buton" value="{{ $prodColor->id }}" class="updateProductColorBtn btn btn-primary btn-sm text-white">Update</button>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <button type="buton" value="{{ $prodColor->id }}" class="deleteProductColorBtn btn btn-danger btn-sm text-white">Delete</button>
-                                                </td>
-                                            </tr>
+                                        <tr class="prod-color-tr">
+                                            <td>
+                                                @if ($prodColor->color)
+                                                {{ $prodColor->color->name }}
+                                                @else
+                                                No Color Found !!!
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <div class="input-group mb-3" style="width: 150px;">
+                                                    <input type="text"
+                                                        class="productColorQuantity form-control form-control-sm"
+                                                        value="{{ $prodColor->quantity }}">
+                                                    <button type="buton" value="{{ $prodColor->id }}"
+                                                        class="updateProductColorBtn btn btn-primary btn-sm text-white">Update</button>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button type="buton" value="{{ $prodColor->id }}"
+                                                    class="deleteProductColorBtn btn btn-danger btn-sm text-white">Delete</button>
+                                            </td>
+                                        </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -251,14 +275,58 @@
 @section('scripts')
 
 <script>
-    $(document).ready(function(){
-        $(document).on('click', '.updateProductColorBtn', function(){
+    $(document).ready(function () {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(document).on('click', '.updateProductColorBtn', function () {
 
             var product_id = "{{ $product->id }}";
             var prod_color_id = $(this).val();
+            var qty = $(this).closest('.prod-color-tr').find('.productColorQuantity').val();
             // alert(prod_color_id);
+            if (qty <= 0) {
+                alert('Quantity is required');
+                return false;
+            }
+
+            var data = {
+                'product_id': product_id,
+                //'prod_color_id': prod_color_id,
+                'qty': qty
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/admin/product-color/"+prod_color_id,
+                data: data,
+                success: function (response) {
+                    alert(response.message);
+                }
+            });
 
         });
+
+        
+        $(document).on('click', '.deleteProductColorBtn', function () {
+
+            var prod_color_id = $(this).val();
+            var thisClick = $(this);
+
+            $.ajax({
+                type: "GET",
+                url: "/admin/product-color/"+prod_color_id+"/delete",
+                success: function (response) {
+                    thisClick.closest('.prod-color-tr').remove();
+                    alert(response.message);
+                }
+            });
+        });
+
     });
 </script>
 
