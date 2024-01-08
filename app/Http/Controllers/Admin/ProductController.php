@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\Color;
 use App\Http\Requests\ProductFormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -24,7 +25,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $brands = Brand::all();
-        return view('admin.products.create', compact('categories','brands'));
+        $colors = Color::where('status','0')->get();
+        return view('admin.products.create', compact('categories','brands','colors'));
     }
 
     public function store(ProductFormRequest $request)
@@ -69,6 +71,18 @@ class ProductController extends Controller
             }
         }
 
+        if ($request->colors)
+        {
+            foreach ($request->colors as $key => $color) 
+            {
+                $product->productColors()->create([
+                    'product_id' => $product->id,
+                    'color_id' => $color,
+                    'quantity' => $request->colorquantity[$key] ?? 0
+                ]);
+            }
+        }
+
         return redirect('/admin/products')->with('message', 'Product Added Successfully');
     }
 
@@ -77,7 +91,9 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $product = Product::findOrFail($product_id);
-        return view('admin.products.edit', compact('categories','brands','product'));
+        $product_color = $product->productColors->pluck('color_id')->toArray();
+        $colors = Color::whereNotIn('id',$product_color)->get();
+        return view('admin.products.edit', compact('categories','brands','product','colors'));
     }
 
     public function update(ProductFormRequest $request, int $product_id)
