@@ -7,9 +7,11 @@ use App\Models\Product;
 
 class Index extends Component
 {
-    public $products, $category, $brandInputs = [];
+    public $products, $category, $brandInputs = [], $priceInputs;
     protected $queryString = [
-        'brandInputs' => ['except' => '', 'as' => 'brand']
+        'brandInputs' => ['except' => '', 'as' => 'brand'],
+        'priceInputs' => ['except' => '', 'as' => 'price'],
+
     ];
     public function mount($category)
     {
@@ -21,6 +23,15 @@ class Index extends Component
         $this->products = Product::where('category_id',$this->category->id)
                             ->when($this->brandInputs, function ($q){
                                 $q->whereIn('brand', $this->brandInputs);
+                            })
+                            ->when($this->priceInputs, function ($q){
+
+                                $q->when($this->priceInputs == 'high-to-low', function ($q2){
+                                    $q2->orderBy('selling_price','DESC');
+                                    })
+                                    ->when($this->priceInputs == 'low-to-high', function ($q2){
+                                        $q2->orderBy('selling_price','ASC');
+                                    });
                             })
                             ->where('status','0')
                             ->get();
