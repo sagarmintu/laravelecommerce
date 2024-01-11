@@ -132,7 +132,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3">
-                                        <label>Treanding</label>
+                                        <label>Trending</label>
                                         <input type="checkbox" name="trending" style="width:50px; height:15px;">
                                     </div>
                                 </div>
