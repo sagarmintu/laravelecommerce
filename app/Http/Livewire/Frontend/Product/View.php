@@ -8,7 +8,7 @@ use App\Models\Wishlist;
 
 class View extends Component
 {
-    public $category, $product, $prdColorSelectedQuantity;
+    public $category, $product, $prdColorSelectedQuantity, $quantityCount = 1;
 
     public function addToWishlist($productId)
     {
@@ -62,6 +62,23 @@ class View extends Component
             $this->prdColorSelectedQuantity = 'outOfStock';
         }
     }
+
+    public function decrementQuantity()
+    {
+        if ($this->quantityCount > 1)
+        {
+            $this->quantityCount--;
+        }
+    }
+
+    public function incrementQuantity()
+    {
+        if ($this->quantityCount < 10)
+        {
+            $this->quantityCount++;
+        }
+    }
+
     public function mount($category, $product)
     {
         $this->category = $category;
