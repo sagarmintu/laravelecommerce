@@ -18,7 +18,6 @@ class View extends Component
             // dd("I am in");
             if(Wishlist::where('user_id', auth()->user()->id)->where('product_id', $productId)->exists())
             {
-                // session()->flash('message', 'Already Added To Wishlist');
                 $this->dispatchBrowserEvent('message', [
                     'text' => 'Already Added To Wishlist',
                     'type' => 'warning',
@@ -32,7 +31,9 @@ class View extends Component
                     'user_id' => auth()->user()->id,
                     'product_id' => $productId
                 ]);
-                // session()->flash('message', 'Wishlist Added Successfully');
+
+                $this->emit('wishlistAddedOrUpdated');
+                
                 $this->dispatchBrowserEvent('message', [
                     'text' => 'Wishlist Added Successfully',
                     'type' => 'success',
@@ -42,7 +43,6 @@ class View extends Component
         }
         else
         {
-            // session()->flash('message', 'Please Login To Continue...');
             $this->dispatchBrowserEvent('message', [
                 'text' => 'Please Login To Continue...',
                 'type' => 'error',

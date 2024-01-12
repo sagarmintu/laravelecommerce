@@ -11,6 +11,7 @@ class WishlistShow extends Component
     {
         // dd($wishlistId);
         Wishlist::where('user_id', auth()->user()->id)->where('id', $wishlistId)->delete();
+        $this->emit('wishlistAddedOrUpdated');
         $this->dispatchBrowserEvent('message', [
             'text' => 'Wishlist Item Deleted Successfully',
             'type' => 'success',
