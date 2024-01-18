@@ -1,5 +1,5 @@
 <div>
-<div class="py-3 py-md-5">
+<div class="py-3 py-md-5 bg-light">
         <div class="container">
             <h4 class="text-center">Cart List Details</h4>
             <hr/>
@@ -65,6 +65,9 @@
                                         </div>
                                         <div class="col-md-1 my-auto">
                                             <label class="price">₹{{ $cartItem->product->selling_price * $cartItem->quantity }} </label>
+                                            @php 
+                                                $totalPrice += $cartItem->product->selling_price * $cartItem->quantity
+                                            @endphp
                                         </div>
                                         <div class="col-md-2 col-5 my-auto">
                                             <div class="remove">
@@ -89,6 +92,23 @@
                             </div>
                         @endforelse
                         
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 my-md-auto mt-3">
+                    <h5>
+                        Get The Best Deals & Offers <a href="{{ url('/collections') }}">Shop Now</a>
+                    </h5>
+                </div>
+                <div class="col-md-4 mt-3">
+                    <div class="shadow-sm bg-white p-3">
+                        <h4>Total: 
+                            <span class="float-end">₹{{ $totalPrice }}</span>
+                        </h4>
+                        <hr>
+                        <a href="{{ url('/checkout') }}" class="btn btn-warning w-100">Check Out</a>
                     </div>
                 </div>
             </div>
