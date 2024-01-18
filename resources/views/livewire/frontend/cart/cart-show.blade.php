@@ -68,9 +68,14 @@
                                         </div>
                                         <div class="col-md-2 col-5 my-auto">
                                             <div class="remove">
-                                                <a href="" class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-trash"></i> Remove
-                                                </a>
+                                                <button type="button" class="btn btn-danger btn-sm" wire:loading.attr="disabled" wire:click="removeCartItem({{ $cartItem->id }})">
+                                                    <span wire:loading.remove wire:target="removeCartItem({{ $cartItem->id }})">
+                                                        <i class="fa fa-trash"></i> Remove
+                                                    </span>
+                                                    <span wire:loading wire:target="removeCartItem({{ $cartItem->id }})">
+                                                        <i class="fa fa-trash"></i> Removing
+                                                    </span>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
