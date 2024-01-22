@@ -18,6 +18,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
+                @if(session('message'))
+                    <h5 class="alert alert-success">{{ session('message') }}</h5>
+                @endif
                 <header class="site-header" id="header">
                     <h1 class="site-header__title" data-lead-id="site-header-title">THANK YOU!</h1>
                 </header>
