@@ -23,6 +23,10 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
 
+    <!-- OwlCarousel -->
+    <link href="{{ asset('assets/css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/owl.theme.default.min.css') }}" rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
     <!-- Default theme -->
@@ -42,8 +46,9 @@
     </div>
 
     <!-- scripts -->
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
-    <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}" defer></script>
+    <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
     <script>
@@ -56,6 +61,10 @@
             }
         });
     </script>
+
+    <!-- OwlCarousel -->
+    <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+    @yield('script')
 
     @livewireScripts
     @stack('scripts')
