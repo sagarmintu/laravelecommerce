@@ -48,7 +48,7 @@
     </div>
 </div>
 
-<div class="py-5">
+<div class="py-5" style="background: #dee5f0;">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
