@@ -33,17 +33,17 @@
                         <div class="footer-underline"></div>
                         <div class="mb-2">
                             <p>
-                                <i class="fa fa-map-marker"></i> Scorpio House, 3rd Floor, Building No.3, Marathahalli Bridge, Laxmi Layout, Munnekolala, Marathahalli, Bangalore - 560037
+                                <i class="fa fa-map-marker"></i> {{ $appSetting->address ?? 'Website Address' }}
                             </p>
                         </div>
                         <div class="mb-2">
                             <a href="" class="text-white">
-                                <i class="fa fa-phone"></i> +918123414479
+                                <i class="fa fa-phone"></i> +{{ $appSetting->phone1 ?? 'Website Phone Number' }}
                             </a>
                         </div>
                         <div class="mb-2">
                             <a href="" class="text-white">
-                                <i class="fa fa-envelope"></i> info@ralecon.com
+                                <i class="fa fa-envelope"></i> {{ $appSetting->email1 ?? 'Website Email Address' }}
                             </a>
                         </div>
                     </div>
@@ -59,10 +59,18 @@
                     <div class="col-md-4">
                         <div class="social-media">
                             Get Connected:
-                            <a href="https://www.facebook.com/ralecon"><i class="fa fa-facebook"></i></a>
-                            <a href="https://twitter.com/ralecondotcom"><i class="fa fa-twitter"></i></a>
-                            <a href="https://www.pinterest.com/ralecon/"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                            <a href="https://www.linkedin.com/company/ralecon/?originalSubdomain=in"><i class="fa fa-linkedin"></i></a>
+                            @if ($appSetting->facebook)
+                                <a href="{{ $appSetting->facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                            @endif
+                            @if ($appSetting->twitter)
+                                <a href="{{ $appSetting->twitter }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                            @endif
+                            @if ($appSetting->pinterest)
+                                <a href="{{ $appSetting->pinterest }}" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            @endif
+                            @if ($appSetting->instagram)
+                                <a href="{{ $appSetting->instagram }}" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2024 at 12:05 PM
+-- Generation Time: Jan 30, 2024 at 08:34 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -168,7 +168,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (17, '2024_01_11_113307_create_wishlists_table', 10),
 (18, '2024_01_12_113058_create_carts_table', 11),
 (19, '2024_01_22_065155_create_orders_table', 12),
-(20, '2024_01_22_065840_create_order_items_table', 12);
+(20, '2024_01_22_065840_create_order_items_table', 12),
+(22, '2024_01_30_063634_create_settings_table', 13);
 
 -- --------------------------------------------------------
 
@@ -280,6 +281,7 @@ CREATE TABLE `products` (
   `selling_price` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `trending` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1=trending,0=not-trending',
+  `featured` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1=featured,0=not-featured',
   `status` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1=hidden,0=visible',
   `meta_title` varchar(255) DEFAULT NULL,
   `meta_keyword` mediumtext DEFAULT NULL,
@@ -292,13 +294,13 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `category_id`, `name`, `slug`, `brand`, `small_description`, `description`, `original_price`, `selling_price`, `quantity`, `trending`, `status`, `meta_title`, `meta_keyword`, `meta_description`, `created_at`, `updated_at`) VALUES
-(5, 4, 'ThinkPad-E16-40.64cms-13th-Gen-Intel-i5', 'ThinkPad-E16-40.64cms-13th-Gen-Intel-i5', 'Apple', '13th Generation Intel® Core™ i5-1335U Processor (E-cores up to 3.40 GHz P-cores up to 4.60 GHz)', 'The Bottom Line. The Lenovo ThinkPad 13 is an inexpensive rugged laptop with all-day battery life; it\'s a fine choice whether you\'re buying it for a college student or a small business. PCMag editors select and review products independently.', 126401, 71999, 4, 1, 0, 'Leonove New Model', '13th Generation Intel® Core™ i5-1335U Processor (E-cores up to 3.40 GHz P-cores up to 4.60 GHz)', 'The Bottom Line. The Lenovo ThinkPad 13 is an inexpensive rugged laptop with all-day battery life; it\'s a fine choice whether you\'re buying it for a college student or a small business. PCMag editors select and review products independently.', '2024-01-04 01:35:06', '2024-01-22 04:37:10'),
-(6, 4, 'Acer-Nitro-5-Gaming-Laptop-Intel-Core-i5-12450H', 'Acer-Nitro-5-Gaming-Laptop-Intel-Core-i5-12450H', 'Leonove', 'The Acer Nitro 5, now called Nitro V 15, is arguably one of the best cheap gaming laptops you can get, but of course, that comes with some reasonable compromises.', 'So things like Gaming or Video Editing on battery? Don\'t. But still, the Nitro 5 can deliver 5–6 hours of battery for typical tasks, like MS Office, PDF reading, browsing and so on, if you need, which I consider pretty decent, and enough for a huge chunk of the day.', 100000, 88000, 3, 1, 0, 'Leonove', 'The screen also has multi-touch support.', 'Our Verdict. The Acer Nitro 5 is decent for school use. It\'s more than powerful enough to handle light tasks like web browsing and text processing, and its battery lasts easily through a typical eight-hour day as long as you don\'t run any CPU or GPU-intensive programs.', '2024-01-05 05:46:18', '2024-01-05 05:46:18'),
-(7, 5, 'Men\'s Shirt', 'shirt', 'shirt', 'a garment for the upper part of the body usually with a collar, sleeves, a front opening, and a tail long enough to be tucked inside pants or a skir', 'A shirt that is light and has breathable fabric is the best. It\'s nice if they are super soft but have good structure - the cut of it, the neck line and the sleeves are important. Long is good. Something that is fashion friendly and up with the trends, but not clingy and not too loose.', 799, 999, 3, 1, 0, 'Men\'s Shirt', 'a garment for the upper part of the body usually with a collar, sleeves, a front opening, and a tail long enough to be tucked inside pants or a skir', 'A shirt that is light and has breathable fabric is the best. It\'s nice if they are super soft but have good structure - the cut of it, the neck line and the sleeves are important. Long is good. Something that is fashion friendly and up with the trends, but not clingy and not too loose.', '2024-01-11 00:37:30', '2024-01-23 04:40:34'),
-(8, 5, 'Oxford Shirts', 'shirt', 'shirt', 'The name Oxford refers to a type of cloth originally made in Scotland – it\'s heavier and has a rougher weave (also sometimes known as a basket weave) than other types of shirts, which means it\'s sometimes more durable.', 'First of all, Oxford is a type of cloth that was created in Scottish Fabric mills. It has a heavier and rougher weave than most traditional dress shirt cloths - some refer to it as a basket weave. Oxford cloth tends to be stiff and hold up their form, while still being more formal than flannels.', 999, 1599, 4, 0, 0, 'shirts', 'The name Oxford refers to a type of cloth originally made in Scotland – it\'s heavier and has a rougher weave (also sometimes known as a basket weave) than other types of shirts, which means it\'s sometimes more durable.', 'First of all, Oxford is a type of cloth that was created in Scottish Fabric mills. It has a heavier and rougher weave than most traditional dress shirt cloths - some refer to it as a basket weave. Oxford cloth tends to be stiff and hold up their form, while still being more formal than flannels.', '2024-01-11 00:41:16', '2024-01-11 00:41:16'),
-(9, 1, 'Redmi Note 12 Pro 5G', 'redmi-12', 'MI', 'The phone comes with a 60 Hz refresh rate 6.60-inch touchscreen display offering a resolution of 1080x2400 pixels and an aspect ratio of 20:9.', 'Redmi Note 12 Pro 5G comes with a 120Hz Pro AMOLED Display with Dolby Atmos & Vision support. This combination along with HDR10+, a 1 billion color display, dual stereo speakers, and hi-res audio (wired & wireless) certification transforms your device into a wholesome multimedia package.', 26999, 21999, 2, 0, 0, 'Redmi Note 12 Pro 5G', 'The phone comes with a 60 Hz refresh rate 6.60-inch touchscreen display offering a resolution of 1080x2400 pixels and an aspect ratio of 20:9.', 'Redmi Note 12 Pro 5G comes with a 120Hz Pro AMOLED Display with Dolby Atmos & Vision support. This combination along with HDR10+, a 1 billion color display, dual stereo speakers, and hi-res audio (wired & wireless) certification transforms your device into a wholesome multimedia package.', '2024-01-11 00:48:36', '2024-01-11 00:48:36'),
-(10, 1, 'OPPO A38', 'oppo-a38', 'Oppo', 'In terms of connectivity, the OPPO A38 supports 5G SA/NSA and dual 4G VoLTE for high-speed internet access. It also features Wi-Fi 802.', 'The phone comes with a 90 Hz refresh rate 6.56-inch touchscreen display offering a resolution of 1612x720 pixels (HD+). Oppo A38 is powered by an octa-core MediaTek Helio G85 processor. It comes with 4GB of RAM. The Oppo A38 runs Android Android 13 and is powered by a 5000mAh non-removable battery.', 15999, 11999, 4, 1, 0, 'OPPO A38', 'In terms of connectivity, the OPPO A38 supports 5G SA/NSA and dual 4G VoLTE for high-speed internet access. It also features Wi-Fi 802.', 'The phone comes with a 90 Hz refresh rate 6.56-inch touchscreen display offering a resolution of 1612x720 pixels (HD+). Oppo A38 is powered by an octa-core MediaTek Helio G85 processor. It comes with 4GB of RAM. The Oppo A38 runs Android Android 13 and is powered by a 5000mAh non-removable battery.', '2024-01-11 00:50:53', '2024-01-11 00:50:53');
+INSERT INTO `products` (`id`, `category_id`, `name`, `slug`, `brand`, `small_description`, `description`, `original_price`, `selling_price`, `quantity`, `trending`, `featured`, `status`, `meta_title`, `meta_keyword`, `meta_description`, `created_at`, `updated_at`) VALUES
+(5, 4, 'ThinkPad-E16-40.64cms-13th-Gen-Intel-i5', 'ThinkPad-E16-40.64cms-13th-Gen-Intel-i5', 'Apple', '13th Generation Intel® Core™ i5-1335U Processor (E-cores up to 3.40 GHz P-cores up to 4.60 GHz)', 'The Bottom Line. The Lenovo ThinkPad 13 is an inexpensive rugged laptop with all-day battery life; it\'s a fine choice whether you\'re buying it for a college student or a small business. PCMag editors select and review products independently.', 126401, 71999, 4, 1, 0, 0, 'Leonove New Model', '13th Generation Intel® Core™ i5-1335U Processor (E-cores up to 3.40 GHz P-cores up to 4.60 GHz)', 'The Bottom Line. The Lenovo ThinkPad 13 is an inexpensive rugged laptop with all-day battery life; it\'s a fine choice whether you\'re buying it for a college student or a small business. PCMag editors select and review products independently.', '2024-01-04 01:35:06', '2024-01-22 04:37:10'),
+(6, 4, 'Acer-Nitro-5-Gaming-Laptop-Intel-Core-i5-12450H', 'Acer-Nitro-5-Gaming-Laptop-Intel-Core-i5-12450H', 'Leonove', 'The Acer Nitro 5, now called Nitro V 15, is arguably one of the best cheap gaming laptops you can get, but of course, that comes with some reasonable compromises.', 'So things like Gaming or Video Editing on battery? Don\'t. But still, the Nitro 5 can deliver 5–6 hours of battery for typical tasks, like MS Office, PDF reading, browsing and so on, if you need, which I consider pretty decent, and enough for a huge chunk of the day.', 100000, 88000, 3, 1, 0, 0, 'Leonove', 'The screen also has multi-touch support.', 'Our Verdict. The Acer Nitro 5 is decent for school use. It\'s more than powerful enough to handle light tasks like web browsing and text processing, and its battery lasts easily through a typical eight-hour day as long as you don\'t run any CPU or GPU-intensive programs.', '2024-01-05 05:46:18', '2024-01-05 05:46:18'),
+(7, 5, 'Men\'s Shirt', 'shirt', 'shirt', 'a garment for the upper part of the body usually with a collar, sleeves, a front opening, and a tail long enough to be tucked inside pants or a skir', 'A shirt that is light and has breathable fabric is the best. It\'s nice if they are super soft but have good structure - the cut of it, the neck line and the sleeves are important. Long is good. Something that is fashion friendly and up with the trends, but not clingy and not too loose.', 799, 999, 3, 1, 0, 0, 'Men\'s Shirt', 'a garment for the upper part of the body usually with a collar, sleeves, a front opening, and a tail long enough to be tucked inside pants or a skir', 'A shirt that is light and has breathable fabric is the best. It\'s nice if they are super soft but have good structure - the cut of it, the neck line and the sleeves are important. Long is good. Something that is fashion friendly and up with the trends, but not clingy and not too loose.', '2024-01-11 00:37:30', '2024-01-23 04:40:34'),
+(8, 5, 'Oxford Shirts', 'shirt', 'shirt', 'The name Oxford refers to a type of cloth originally made in Scotland – it\'s heavier and has a rougher weave (also sometimes known as a basket weave) than other types of shirts, which means it\'s sometimes more durable.', 'First of all, Oxford is a type of cloth that was created in Scottish Fabric mills. It has a heavier and rougher weave than most traditional dress shirt cloths - some refer to it as a basket weave. Oxford cloth tends to be stiff and hold up their form, while still being more formal than flannels.', 999, 1599, 4, 0, 0, 0, 'shirts', 'The name Oxford refers to a type of cloth originally made in Scotland – it\'s heavier and has a rougher weave (also sometimes known as a basket weave) than other types of shirts, which means it\'s sometimes more durable.', 'First of all, Oxford is a type of cloth that was created in Scottish Fabric mills. It has a heavier and rougher weave than most traditional dress shirt cloths - some refer to it as a basket weave. Oxford cloth tends to be stiff and hold up their form, while still being more formal than flannels.', '2024-01-11 00:41:16', '2024-01-11 00:41:16'),
+(9, 1, 'Redmi Note 12 Pro 5G', 'redmi-12', 'MI', 'The phone comes with a 60 Hz refresh rate 6.60-inch touchscreen display offering a resolution of 1080x2400 pixels and an aspect ratio of 20:9.', 'Redmi Note 12 Pro 5G comes with a 120Hz Pro AMOLED Display with Dolby Atmos & Vision support. This combination along with HDR10+, a 1 billion color display, dual stereo speakers, and hi-res audio (wired & wireless) certification transforms your device into a wholesome multimedia package.', 26999, 21999, 2, 0, 0, 0, 'Redmi Note 12 Pro 5G', 'The phone comes with a 60 Hz refresh rate 6.60-inch touchscreen display offering a resolution of 1080x2400 pixels and an aspect ratio of 20:9.', 'Redmi Note 12 Pro 5G comes with a 120Hz Pro AMOLED Display with Dolby Atmos & Vision support. This combination along with HDR10+, a 1 billion color display, dual stereo speakers, and hi-res audio (wired & wireless) certification transforms your device into a wholesome multimedia package.', '2024-01-11 00:48:36', '2024-01-11 00:48:36'),
+(10, 1, 'OPPO A38', 'oppo-a38', 'Oppo', 'In terms of connectivity, the OPPO A38 supports 5G SA/NSA and dual 4G VoLTE for high-speed internet access. It also features Wi-Fi 802.', 'The phone comes with a 90 Hz refresh rate 6.56-inch touchscreen display offering a resolution of 1612x720 pixels (HD+). Oppo A38 is powered by an octa-core MediaTek Helio G85 processor. It comes with 4GB of RAM. The Oppo A38 runs Android Android 13 and is powered by a 5000mAh non-removable battery.', 15999, 11999, 4, 1, 0, 0, 'OPPO A38', 'In terms of connectivity, the OPPO A38 supports 5G SA/NSA and dual 4G VoLTE for high-speed internet access. It also features Wi-Fi 802.', 'The phone comes with a 90 Hz refresh rate 6.56-inch touchscreen display offering a resolution of 1612x720 pixels (HD+). Oppo A38 is powered by an octa-core MediaTek Helio G85 processor. It comes with 4GB of RAM. The Oppo A38 runs Android Android 13 and is powered by a 5000mAh non-removable battery.', '2024-01-11 00:50:53', '2024-01-11 00:50:53');
 
 -- --------------------------------------------------------
 
@@ -367,6 +369,39 @@ INSERT INTO `product_images` (`id`, `product_id`, `image`, `created_at`, `update
 (23, 10, 'uploads/products/17049540532.jpg', '2024-01-11 00:50:53', '2024-01-11 00:50:53'),
 (24, 10, 'uploads/products/17049540533.jpg', '2024-01-11 00:50:53', '2024-01-11 00:50:53'),
 (25, 10, 'uploads/products/17049540534.jpg', '2024-01-11 00:50:53', '2024-01-11 00:50:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `website_name` varchar(255) DEFAULT NULL,
+  `website_url` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `meta_keywords` varchar(500) DEFAULT NULL,
+  `meta_description` varchar(500) DEFAULT NULL,
+  `address` varchar(500) DEFAULT NULL,
+  `phone1` varchar(255) DEFAULT NULL,
+  `phone2` varchar(255) DEFAULT NULL,
+  `email1` varchar(255) DEFAULT NULL,
+  `email2` varchar(255) DEFAULT NULL,
+  `facebook` varchar(255) DEFAULT NULL,
+  `twitter` varchar(255) DEFAULT NULL,
+  `instagram` varchar(255) DEFAULT NULL,
+  `pinterest` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`id`, `website_name`, `website_url`, `title`, `meta_keywords`, `meta_description`, `address`, `phone1`, `phone2`, `email1`, `email2`, `facebook`, `twitter`, `instagram`, `pinterest`, `created_at`, `updated_at`) VALUES
+(1, 'Ralecon Ecommerce', 'http://127.0.0.1:8000/', 'Ralecon Ecommerce', 'Ecommerce', 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.', 'Scorpio House, 3rd Floor, Building No.3, Marathahalli Bridge, Laxmi Layout, Munnekolala, Marathahalli, Bangalore - 560037', '918123414479', '918123414479', 'info@ralecon.com', 'info@ralecon.com', 'https://www.facebook.com/ralecon', 'https://twitter.com/ralecondotcom', 'https://www.linkedin.com/company/ralecon/mycompany/', 'https://www.pinterest.com/ralecon/', '2024-01-30 01:39:34', '2024-01-30 01:55:34');
 
 -- --------------------------------------------------------
 
@@ -523,6 +558,12 @@ ALTER TABLE `product_images`
   ADD KEY `product_images_product_id_foreign` (`product_id`);
 
 --
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sliders`
 --
 ALTER TABLE `sliders`
@@ -579,7 +620,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -616,6 +657,12 @@ ALTER TABLE `product_colors`
 --
 ALTER TABLE `product_images`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sliders`

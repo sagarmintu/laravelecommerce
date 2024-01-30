@@ -56,16 +56,16 @@
                 <span class="menu-title">Colors</span>
             </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="pages/icons/mdi.html">
                 <i class="mdi mdi-emoticon menu-icon"></i>
                 <span class="menu-title">Icons</span>
             </a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <i class="mdi mdi-account menu-icon"></i>
-                <span class="menu-title">User Pages</span>
+                <span class="menu-title">User</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
@@ -86,9 +86,9 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="documentation/documentation.html">
+            <a class="nav-link" href="{{ url('admin/settings') }}">
                 <i class="mdi mdi-file-document-box-outline menu-icon"></i>
-                <span class="menu-title">Documentation</span>
+                <span class="menu-title">Site Setting</span>
             </a>
         </li>
     </ul>
