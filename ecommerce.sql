@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2024 at 07:16 AM
+-- Generation Time: Feb 07, 2024 at 08:44 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -199,10 +199,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `user_id`, `tracking_no`, `fullname`, `email`, `phone`, `pincode`, `address`, `status_message`, `payment_mode`, `payment_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 'ralecon-B3Vq8n4MCm', 'sagar kumar behera', 'sagarkumar@ralecon.com', '9632587415', '560091', 'Banglore, India', 'in progress', 'Cash On Delivery', NULL, '2024-01-22 03:54:38', '2024-01-22 03:54:38'),
-(2, 1, 'ralecon-voY1eacjy6', 'sagar kumar behera', 'sagarkumar@ralecon.com', '9861113562', '751016', 'Bhubaneswar, Orisssa', 'in progress', 'Cash On Delivery', NULL, '2024-01-22 03:57:56', '2024-01-22 03:57:56'),
-(3, 1, 'ralecon-yGSzbggDuA', 'sagar kumar behera', 'sagarkumar@ralecon.com', '9871236452', '751017', 'Khurda, Orissa', 'completed', 'Cash On Delivery', NULL, '2024-01-23 04:37:10', '2024-01-23 01:45:36'),
-(4, 1, 'ralecon-src5JVMKai', 'sagar kumar behera', 'sagarkumar@ralecon.com', '9632587419', '751016', 'Bhubaneswar, Orissa', 'In Progress', 'Cash On Delivery', NULL, '2024-01-23 01:50:46', '2024-01-23 01:50:46');
+(1, 1, 'ralecon-B3Vq8n4MCm', 'sagar kumar behera', 'sagarskbehera1996@gmail.com', '9632587415', '560091', 'Banglore, India', 'in progress', 'Cash On Delivery', NULL, '2024-01-22 03:54:38', '2024-01-22 03:54:38'),
+(2, 1, 'ralecon-voY1eacjy6', 'sagar kumar behera', 'sagarskbehera1996@gmail.com', '9861113562', '751016', 'Bhubaneswar, Orisssa', 'in progress', 'Cash On Delivery', NULL, '2024-01-22 03:57:56', '2024-01-22 03:57:56'),
+(3, 1, 'ralecon-yGSzbggDuA', 'sagar kumar behera', 'sagarskbehera1996@gmail.com', '9871236452', '751017', 'Khurda, Orissa', 'completed', 'Cash On Delivery', NULL, '2024-01-23 04:37:10', '2024-01-23 01:45:36'),
+(4, 1, 'ralecon-src5JVMKai', 'sagar kumar behera', 'sagarskbehera1996@gmail.com', '9632587419', '751016', 'Bhubaneswar, Orissa', 'In Progress', 'Cash On Delivery', NULL, '2024-01-23 01:50:46', '2024-01-23 01:50:46');
 
 -- --------------------------------------------------------
 
@@ -452,9 +452,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role_as`) VALUES
-(1, 'Sagar Kumar Behera', 'sagarkumar@ralecon.com', NULL, '$2y$10$XoXmGJ7YTQuGGqRaVPTHPe4tr3NTb3Nnu3i.sqCZGYzkfvdRwcf22', 'XS6Ca1J6ZER8nHKQfIM6ukjge0AdY9jDLb54LuOZOsLi0YLoPJeRXoWtdJAe', '2023-12-28 22:37:47', '2024-02-07 00:45:53', 0),
+(1, 'Sagar Kumar Behera', 'sagarkumar@ralecon.com', NULL, '$2y$10$XoXmGJ7YTQuGGqRaVPTHPe4tr3NTb3Nnu3i.sqCZGYzkfvdRwcf22', 'NV4WH6sA6U9nVr9yZw5qJhjfd3IDq08CymUT41Fjln6qZ0WJeQyRUnshFBmu', '2023-12-28 22:37:47', '2024-02-07 00:45:53', 0),
 (2, 'Admin', 'admin@gmail.com', NULL, '$2y$10$FSl3vDK6CihKLybs240tduyOXd8nKYe1Ct.LYIw4lHGaxiUDORNdq', '4dPmQweYPWiqZKS0GEG29tJBPUDPr7jpefaZKIP5EcwbGpi7X6H9Dhc95HWQ', '2023-12-28 23:51:15', '2023-12-28 23:51:15', 1),
-(3, 'kathiravan  v', 'kathir@ralecon.com', NULL, '$2y$10$bgujh3h2YHP7znKEzwITSuqnFtjHYyiptVWVICTIVFSyVET3E1.HW', NULL, '2024-02-01 05:21:03', '2024-02-01 06:21:26', 1);
+(3, 'kathiravan  v', 'kathir@ralecon.com', NULL, '$2y$10$vbnLG.AdpAhrzVVuMXBPzuOCe1s7M0CNHwhQoiNVsaQUT9tXZxkb.', NULL, '2024-02-01 05:21:03', '2024-02-07 01:20:10', 1);
 
 -- --------------------------------------------------------
 
@@ -477,7 +477,8 @@ CREATE TABLE `user_details` (
 --
 
 INSERT INTO `user_details` (`id`, `user_id`, `phone`, `zip_code`, `address`, `created_at`, `updated_at`) VALUES
-(1, 1, '9632587418', '751018', 'Bhubaneswar, Orissa', '2024-02-07 00:40:58', '2024-02-07 00:45:53');
+(1, 1, '9632587418', '751018', 'Bhubaneswar, Orissa', '2024-02-07 00:40:58', '2024-02-07 00:45:53'),
+(2, 3, '9632587415', '751018', 'Tamilnadu', '2024-02-07 01:13:09', '2024-02-07 01:13:09');
 
 -- --------------------------------------------------------
 
@@ -712,7 +713,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `wishlists`
