@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 01, 2024 at 12:55 PM
+-- Generation Time: Feb 07, 2024 at 07:16 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -169,7 +169,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (18, '2024_01_12_113058_create_carts_table', 11),
 (19, '2024_01_22_065155_create_orders_table', 12),
 (20, '2024_01_22_065840_create_order_items_table', 12),
-(22, '2024_01_30_063634_create_settings_table', 13);
+(22, '2024_01_30_063634_create_settings_table', 13),
+(23, '2024_02_07_045546_create_user_details_table', 14);
 
 -- --------------------------------------------------------
 
@@ -451,9 +452,32 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role_as`) VALUES
-(1, 'sagar kumar behera', 'sagarkumar@ralecon.com', NULL, '$2y$10$XoXmGJ7YTQuGGqRaVPTHPe4tr3NTb3Nnu3i.sqCZGYzkfvdRwcf22', 'XS6Ca1J6ZER8nHKQfIM6ukjge0AdY9jDLb54LuOZOsLi0YLoPJeRXoWtdJAe', '2023-12-28 22:37:47', '2023-12-28 22:37:47', 0),
+(1, 'Sagar Kumar Behera', 'sagarkumar@ralecon.com', NULL, '$2y$10$XoXmGJ7YTQuGGqRaVPTHPe4tr3NTb3Nnu3i.sqCZGYzkfvdRwcf22', 'XS6Ca1J6ZER8nHKQfIM6ukjge0AdY9jDLb54LuOZOsLi0YLoPJeRXoWtdJAe', '2023-12-28 22:37:47', '2024-02-07 00:45:53', 0),
 (2, 'Admin', 'admin@gmail.com', NULL, '$2y$10$FSl3vDK6CihKLybs240tduyOXd8nKYe1Ct.LYIw4lHGaxiUDORNdq', '4dPmQweYPWiqZKS0GEG29tJBPUDPr7jpefaZKIP5EcwbGpi7X6H9Dhc95HWQ', '2023-12-28 23:51:15', '2023-12-28 23:51:15', 1),
 (3, 'kathiravan  v', 'kathir@ralecon.com', NULL, '$2y$10$bgujh3h2YHP7znKEzwITSuqnFtjHYyiptVWVICTIVFSyVET3E1.HW', NULL, '2024-02-01 05:21:03', '2024-02-01 06:21:26', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_details`
+--
+
+CREATE TABLE `user_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `zip_code` varchar(255) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_details`
+--
+
+INSERT INTO `user_details` (`id`, `user_id`, `phone`, `zip_code`, `address`, `created_at`, `updated_at`) VALUES
+(1, 1, '9632587418', '751018', 'Bhubaneswar, Orissa', '2024-02-07 00:40:58', '2024-02-07 00:45:53');
 
 -- --------------------------------------------------------
 
@@ -578,6 +602,13 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indexes for table `user_details`
+--
+ALTER TABLE `user_details`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_details_user_id_unique` (`user_id`);
+
+--
 -- Indexes for table `wishlists`
 --
 ALTER TABLE `wishlists`
@@ -621,7 +652,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -678,6 +709,12 @@ ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `user_details`
+--
+ALTER TABLE `user_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
@@ -705,6 +742,12 @@ ALTER TABLE `product_colors`
 --
 ALTER TABLE `product_images`
   ADD CONSTRAINT `product_images_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `user_details`
+--
+ALTER TABLE `user_details`
+  ADD CONSTRAINT `user_details_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
