@@ -52,6 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('profile', [App\Http\Controllers\Frontend\UserController::class, 'updateUserDetails']);
     Route::get('change-password', [App\Http\Controllers\Frontend\UserController::class, 'passwordCreate']);
     Route::post('change-password', [App\Http\Controllers\Frontend\UserController::class, 'changePassword']);
+
+    Route::get('order', [App\Http\Controllers\Frontend\OrderController::class, 'orderDetails']);
 });
 
 Route::get('thank-you', [App\Http\Controllers\Frontend\FrontendController::class, 'thankyou']);

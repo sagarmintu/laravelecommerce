@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2024 at 08:44 AM
+-- Generation Time: Feb 08, 2024 at 12:47 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -202,7 +202,8 @@ INSERT INTO `orders` (`id`, `user_id`, `tracking_no`, `fullname`, `email`, `phon
 (1, 1, 'ralecon-B3Vq8n4MCm', 'sagar kumar behera', 'sagarskbehera1996@gmail.com', '9632587415', '560091', 'Banglore, India', 'in progress', 'Cash On Delivery', NULL, '2024-01-22 03:54:38', '2024-01-22 03:54:38'),
 (2, 1, 'ralecon-voY1eacjy6', 'sagar kumar behera', 'sagarskbehera1996@gmail.com', '9861113562', '751016', 'Bhubaneswar, Orisssa', 'in progress', 'Cash On Delivery', NULL, '2024-01-22 03:57:56', '2024-01-22 03:57:56'),
 (3, 1, 'ralecon-yGSzbggDuA', 'sagar kumar behera', 'sagarskbehera1996@gmail.com', '9871236452', '751017', 'Khurda, Orissa', 'completed', 'Cash On Delivery', NULL, '2024-01-23 04:37:10', '2024-01-23 01:45:36'),
-(4, 1, 'ralecon-src5JVMKai', 'sagar kumar behera', 'sagarskbehera1996@gmail.com', '9632587419', '751016', 'Bhubaneswar, Orissa', 'In Progress', 'Cash On Delivery', NULL, '2024-01-23 01:50:46', '2024-01-23 01:50:46');
+(4, 1, 'ralecon-src5JVMKai', 'sagar kumar behera', 'sagarskbehera1996@gmail.com', '9632587419', '751016', 'Bhubaneswar, Orissa', 'In Progress', 'Cash On Delivery', NULL, '2024-01-23 01:50:46', '2024-01-23 01:50:46'),
+(5, 1, 'ralecon-Lpo3uLLOT1', 'Sagar Kumar Behera', 'sagarkumar@ralecon.com', '9632587418', '751018', 'Bhubaneswar, Orissa', 'In Progress', 'Cash On Delivery', NULL, '2024-02-08 05:53:26', '2024-02-08 05:53:26');
 
 -- --------------------------------------------------------
 
@@ -232,7 +233,8 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `product_color_id`, `
 (4, 2, 5, NULL, 5, 71999, '2024-01-22 03:57:56', '2024-01-22 03:57:56'),
 (5, 3, 5, NULL, 1, 71999, '2024-01-22 04:37:10', '2024-01-22 04:37:10'),
 (6, 3, 7, 7, 1, 999, '2024-01-22 04:37:10', '2024-01-22 04:37:10'),
-(7, 4, 7, 7, 1, 999, '2024-01-23 01:50:46', '2024-01-23 01:50:46');
+(7, 4, 7, 7, 1, 999, '2024-01-23 01:50:46', '2024-01-23 01:50:46'),
+(8, 5, 7, 5, 1, 999, '2024-02-08 05:53:26', '2024-02-08 05:53:26');
 
 -- --------------------------------------------------------
 
@@ -326,7 +328,7 @@ INSERT INTO `product_colors` (`id`, `product_id`, `color_id`, `quantity`, `creat
 (1, 6, 1, 4, '2024-01-05 05:46:18', '2024-01-07 23:58:49'),
 (3, 6, 2, 2, '2024-01-08 00:02:23', '2024-01-08 00:02:23'),
 (4, 6, 3, 7, '2024-01-08 00:02:23', '2024-01-08 00:02:23'),
-(5, 7, 1, 2, '2024-01-11 00:37:30', '2024-01-11 00:37:30'),
+(5, 7, 1, 1, '2024-01-11 00:37:30', '2024-02-08 05:53:26'),
 (6, 7, 2, 1, '2024-01-11 00:37:30', '2024-01-11 00:37:30'),
 (7, 7, 3, 2, '2024-01-11 00:37:30', '2024-01-23 01:50:46'),
 (8, 8, 5, 2, '2024-01-11 00:41:17', '2024-01-11 00:41:17'),
@@ -452,8 +454,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role_as`) VALUES
-(1, 'Sagar Kumar Behera', 'sagarkumar@ralecon.com', NULL, '$2y$10$XoXmGJ7YTQuGGqRaVPTHPe4tr3NTb3Nnu3i.sqCZGYzkfvdRwcf22', 'NV4WH6sA6U9nVr9yZw5qJhjfd3IDq08CymUT41Fjln6qZ0WJeQyRUnshFBmu', '2023-12-28 22:37:47', '2024-02-07 00:45:53', 0),
-(2, 'Admin', 'admin@gmail.com', NULL, '$2y$10$FSl3vDK6CihKLybs240tduyOXd8nKYe1Ct.LYIw4lHGaxiUDORNdq', '4dPmQweYPWiqZKS0GEG29tJBPUDPr7jpefaZKIP5EcwbGpi7X6H9Dhc95HWQ', '2023-12-28 23:51:15', '2023-12-28 23:51:15', 1),
+(1, 'Sagar Kumar Behera', 'sagarkumar@ralecon.com', NULL, '$2y$10$XoXmGJ7YTQuGGqRaVPTHPe4tr3NTb3Nnu3i.sqCZGYzkfvdRwcf22', 'eyl1ouYx9wBuj33YK8KeUwXbnCd1KvK6bn4fHQFgqBVrMu6UDQfSlpueZKqz', '2023-12-28 22:37:47', '2024-02-07 00:45:53', 0),
+(2, 'Admin', 'admin@gmail.com', NULL, '$2y$10$FSl3vDK6CihKLybs240tduyOXd8nKYe1Ct.LYIw4lHGaxiUDORNdq', 'wIVb9MOPWCOM4wXJeAs9NmrRD1DSnEisuZmb1sPuTLAy5V1BbZXh1oQslo1D', '2023-12-28 23:51:15', '2023-12-28 23:51:15', 1),
 (3, 'kathiravan  v', 'kathir@ralecon.com', NULL, '$2y$10$vbnLG.AdpAhrzVVuMXBPzuOCe1s7M0CNHwhQoiNVsaQUT9tXZxkb.', NULL, '2024-02-01 05:21:03', '2024-02-07 01:20:10', 1);
 
 -- --------------------------------------------------------
@@ -629,7 +631,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -659,13 +661,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

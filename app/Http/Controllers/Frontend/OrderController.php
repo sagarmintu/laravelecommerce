@@ -27,4 +27,10 @@ class OrderController extends Controller
             return redirect()->back()->with('message','Sorry, No Order Found !!!');
         }
     }
+
+    public function orderDetails()
+    {
+        $order_Details = Order::all();
+        return view('frontend.orders.order-details', compact('order_Details'));
+    }
 }
