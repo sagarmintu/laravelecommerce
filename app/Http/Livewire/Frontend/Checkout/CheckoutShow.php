@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire\Frontend\Checkout;
 
+use Exception;
 use Livewire\Component;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Support\Str;
 use App\Models\Orderitem;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PlaceOrderMailable;
 
 class CheckoutShow extends Component
 {
@@ -28,6 +31,17 @@ class CheckoutShow extends Component
         if($codOrder)
         {
             Cart::where('user_id', auth()->user()->id)->delete();
+
+            try 
+            {
+                $order = Order::findOrFail($codOrder->id);
+                Mail::to("$order->email")->send(new PlaceOrderMailable($order));
+            } 
+            catch (Exception $e) 
+            {
+                
+            }
+            
             session()->flash('message', 'Order Placed Succesfully');
             $this->dispatchBrowserEvent('message', [
                 'text' => 'Order Placed Succesfully',
@@ -109,6 +123,17 @@ class CheckoutShow extends Component
         if($codOrder)
         {
             Cart::where('user_id', auth()->user()->id)->delete();
+
+            try 
+            {
+                $order = Order::findOrFail($codOrder->id);
+                Mail::to("$order->email")->send(new PlaceOrderMailable($order));
+            } 
+            catch (Exception $e) 
+            {
+                
+            }
+
             session()->flash('message', 'Order Placed Succesfully');
             $this->dispatchBrowserEvent('message', [
                 'text' => 'Order Placed Succesfully',
@@ -142,6 +167,10 @@ class CheckoutShow extends Component
     {
         $this->fullname = auth()->user()->name;
         $this->email = auth()->user()->email;
+
+        $this->phone = auth()->user()->userDetail->phone;
+        $this->pincode = auth()->user()->userDetail->zip_code;
+        $this->address = auth()->user()->userDetail->address;
 
         $this->totalProductAmount = $this->totalProductAmount();
         return view('livewire.frontend.checkout.checkout-show', [

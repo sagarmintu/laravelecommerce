@@ -109,18 +109,29 @@
 
 <body>
 
+    <div class="text-center">
+        <h2>Thank You For Your Order</h2>
+        <p>
+            Thank You For Purchasing With {{ $appSetting->website_name ?? 'Ralecon Ecommerce'}}
+            <br/>
+            Your Order Items And Details Are Provided Below.
+        </p>
+    </div>
+
     <table class="order-details">
         <thead>
             <tr>
                 <th width="50%" colspan="2">
                     <h2 class="text-start">{{ $appSetting->website_name }}</h2>
                 </th>
+
                 <th width="50%" colspan="2" class="text-end company-data">
                     <span>Invoice Id: #{{ $order->id }}</span> <br>
                     <span>Date: {{ date('d /m / Y') }}</span> <br>
                     <span>Email Id : {{ $appSetting->email1 }}</span> <br>
                     <span>Address: {{ $appSetting->address }}</span> <br>
                 </th>
+
             </tr>
             <tr class="bg-blue">
                 <th width="50%" colspan="2">Order Details</th>
