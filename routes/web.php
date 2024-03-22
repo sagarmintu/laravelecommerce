@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
